@@ -699,22 +699,7 @@ class SparkContext(
         key = uri.getScheme match {
           // A JAR file which exists only on the driver node
           case null | "file" =>
-            if (SparkHadoopUtil.get.isYarnMode() && master == "yarn-standalone") {
-              // In order for this to work in yarn standalone mode the user must specify the 
-              // --addjars option to the client to upload the file into the distributed cache 
-              // of the AM to make it show up in the current working directory.
-              val fileName = new Path(uri.getPath).getName()
-              try {
-                env.httpFileServer.addJar(new File(fileName))
-              } catch {
-                case e: Exception => {
-                  logError("Error adding jar (" + e + "), was the --addJars option used?")
-                  throw e
-                }
-              }
-            } else {
-              env.httpFileServer.addJar(new File(uri.getPath))
-            }
+            env.httpFileServer.addJar(new File(uri.getPath))
           // A JAR file which exists locally on every worker node
           case "local" =>
             "file:" + uri.getPath
