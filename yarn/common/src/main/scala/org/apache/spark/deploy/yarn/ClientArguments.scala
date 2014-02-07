@@ -132,9 +132,9 @@ class ClientArguments(val args: Array[String], val sparkConf: SparkConf) {
       "  --jar JAR_PATH             Path to your application's JAR file (required)\n" +
       "  --class CLASS_NAME         Name of your application's main class (required)\n" +
       "  --args ARGS                Arguments to be passed to your application's main class.\n" +
-      "                             Mutliple invocations are possible, each will be passed in order.\n" +
+      "                             Multiple invocations are possible, each will be passed in order.\n" +
       "  --num-workers NUM          Number of workers to start (Default: 2)\n" +
-      "  --worker-cores NUM         Number of cores for the workers (Default: 1). This is unsused right now.\n" +
+      "  --worker-cores NUM         Number of cores for the workers (Default: 1). This is unused when running against alpha versions of YARN.\n" +
       "  --master-class CLASS_NAME  Class Name for Master (Default: spark.deploy.yarn.ApplicationMaster)\n" +
       "  --master-memory MEM        Memory for Master (e.g. 1000M, 2G) (Default: 512 Mb)\n" +
       "  --worker-memory MEM        Memory per Worker (e.g. 1000M, 2G) (Default: 1G)\n" +
